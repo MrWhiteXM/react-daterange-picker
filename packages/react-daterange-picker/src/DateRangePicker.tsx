@@ -330,6 +330,13 @@ export type DateRangePickerProps = {
    * @example 'yyyy'
    */
   yearPlaceholder?: string;
+  /**
+   * Whether Date choice should be Range or not.
+   *
+   * @default '----'
+   * @example 'yyyy'
+   */
+	useRangeDates?: boolean;
 } & CalendarProps &
   Omit<EventProps, 'onChange' | 'onFocus'>;
 
@@ -635,7 +642,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = function DateRangePicker
       <Calendar
         className={calendarClassName}
         onChange={(value) => onChange(value)}
-        selectRange
+        selectRange={props.useRangeDates ? true : false}
         value={value}
         {...calendarProps}
       />
